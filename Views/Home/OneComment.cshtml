@@ -1,0 +1,21 @@
+@model Comment
+<table class="table table-bordered">
+
+
+@{
+        <p>@ViewBag.ACommentwithLikes.Creator.Name Says: @ViewBag.ACommentwithLikes.Message</p>
+        <p> People that like comments </p>
+    <tr>
+        <th>Alias</th>
+        <th>Name</th>
+    </tr>
+    foreach (var c in ViewBag.ACommentwithLikes.CommentLikers)
+    {
+    <tr>
+        <td>@c.ThatUser.Alias</td>
+        <td>@c.ThatUser.Name</td>
+        
+    </tr>
+    }
+}
+</table>

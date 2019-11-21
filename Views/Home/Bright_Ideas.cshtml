@@ -1,0 +1,41 @@
+<h1>Welcome @ViewBag.User.Name</h1>
+
+@model Comment
+@Html.HiddenFor(m => m.Creator)
+<form action="/Add" method="post">
+    <div class="form-group">
+        <label>Here is an Idea:</label>
+        <input name="Message" class="form-control">
+        <p>
+            <span asp-validation-for="Message"></span>
+        </p>
+    </div>
+    <input type="hidden" asp-for="UserId" value="@ViewBag.loggedIn">
+    <input type="Submit" class="btn btn-info">
+</form>
+
+<table class="table table-bordered">
+
+    @{
+       
+        foreach (var c in ViewBag.commentsWithUser)
+        {
+        }
+        <tr>
+            <th>Commentor</th>
+            <th>Message</th>
+            <th>Action</th>
+            <th> Likes</th>
+        </tr>
+             @foreach (var c in ViewBag.AllCommentswithLikes)
+              {
+            <tr>
+                <td><a href = "OneUser/@c.Creator.UserId">@c.Creator.Name</a></td>
+                <td>@c.Message <a href = "Delete/@c.CommentId">Delete</a></td>
+                <td><a href = "Like/@ViewBag.User.UserId/@c.CommentId">Like</a></td>
+                <td><a href = "LikedBy/@c.CommentId">@c.CommentLikers.Count</a></td>
+            </tr>
+            }
+        
+    }
+</table>

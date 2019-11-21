@@ -1,0 +1,32 @@
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Alias</th>
+        <th>Email</th>
+    </tr>
+    <tr>
+        <td>@ViewBag.UserProfile.Name</td>
+        <td>@ViewBag.UserProfile.Alias</td>
+        <td>@ViewBag.UserProfile.Email</td>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <th>Total Number of Posts</th>
+        <th>Total Number of Likes</th>
+    </tr>
+
+    <tr>
+        <td>@ViewBag.numPosts</td>
+        @{
+            int sum = 0;
+            foreach(var n in ViewBag.numeLikes.LikedComments)
+            {
+                sum++;
+            }
+            <td>@sum</td>
+        }
+    </tr>
+
+</table>
+
